@@ -47,6 +47,11 @@ class MainActivity : AppCompatActivity() {
             adapter = transactionAdapter
             layoutManager = linearLayoutManager
         }
+
+        binding.addBtn.setOnClickListener {
+            val intent = Intent(this, AddTransactionActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
