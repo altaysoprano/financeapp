@@ -1,14 +1,14 @@
 package com.example.financeapp
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.financeapp.data.model.Transaction
 
-class TransactionAdapter(private var transactions: List<Transaction>) : RecyclerView.Adapter<TransactionAdapter.TransactionHolder>() {
+class TransactionAdapter(private var transactions: MutableList<Transaction>) : RecyclerView.Adapter<TransactionAdapter.TransactionHolder>() {
 
     class TransactionHolder(view: View) : RecyclerView.ViewHolder(view) {
         val label : TextView = view.findViewById(R.id.label)
@@ -39,8 +39,13 @@ class TransactionAdapter(private var transactions: List<Transaction>) : Recycler
         return transactions.size
     }
 
+    fun removeItem(position: Int) {
+        transactions.removeAt(position)
+        notifyDataSetChanged()
+    }
+
     fun setData(transactions: List<Transaction>){
-        this.transactions = transactions
+        this.transactions = transactions.toMutableList()
         notifyDataSetChanged()
     }
 }
