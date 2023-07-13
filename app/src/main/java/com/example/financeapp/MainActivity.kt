@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.getTransactions()
-        viewModel.transaction.observe(this) { state ->
+        viewModel.transactions.observe(this) { state ->
             when(state) {
                 is UiState.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE

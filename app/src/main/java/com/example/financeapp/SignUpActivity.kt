@@ -55,15 +55,15 @@ class SignUpActivity : AppCompatActivity() {
         viewModel.signUpState.observe(this) { state ->
             when(state) {
                 is UiState.Loading -> {
-                    binding.progressBarSignIn.visibility = View.VISIBLE
+                    binding.progressBarSignUp.visibility = View.VISIBLE
                 }
                 is UiState.Failure -> {
-                    binding.progressBarSignIn.visibility = View.GONE
+                    binding.progressBarSignUp.visibility = View.GONE
                     Toast.makeText(this, state.error.toString(), Toast.LENGTH_SHORT).show()
                 }
 
                 is UiState.Success -> {
-                    binding.progressBarSignIn.visibility = View.GONE
+                    binding.progressBarSignUp.visibility = View.GONE
                     Toast.makeText(this, "Successfully signed up", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, SignInActivity::class.java)
                     startActivity(intent)
